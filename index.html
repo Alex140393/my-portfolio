@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alexander Fayemiwo - Azure Support Engineer L2. Cloud operations, technical troubleshooting, and cybersecurity expertise.">
+  <meta name="keywords" content="Azure, Support Engineer, Cloud, Technical Support, Cybersecurity">
+  <meta name="author" content="Alexander Fayemiwo">
+  <meta property="og:title" content="Alexander Fayemiwo - Azure Support Engineer L2">
+  <meta property="og:description" content="Cloud-focused support engineer with 3+ years in customer-facing technical roles.">
+  <meta property="og:type" content="website">
+  <title>Alexander Azure Support Engineer L2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header role="banner">
+      <div class="logo">
+        <div class="logoMark">A</div>
+        <div class="logoText">
+          <span>Alexander</span>
+          <span>Azure Support Engineer L2</span>
+        </div>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <button id="mobileNavToggle" class="mobileNavToggle" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+          </svg>
+        </button>
+
+        <div id="mainNav" class="navLinks">
+          <button id="mobileNavClose" class="mobileNavClose" aria-label="Close menu">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+          </button>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#contact">Contact</a>
+          <div class="navDivider" aria-hidden="true"></div>
+          <a href="https://github.com/Alex140393" target="_blank" rel="noopener" aria-label="GitHub" class="socialIcon">GitHub</a>
+          <a href="https://www.linkedin.com/in/oluwatosin-fayemiwo-a7b971242" target="_blank" rel="noopener" aria-label="LinkedIn" class="socialIcon">LinkedIn</a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter" class="socialIcon">Twitter</a>
+
+          <button id="themeToggle" class="toggleButton" aria-label="Toggle theme" aria-pressed="false">
+            <span class="toggleDot" aria-hidden="true"></span>
+            <span class="themeLabel" id="themeLabel">Dark</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Visible alert for form and global messages (dismissible) -->
+    <div id="formAlert" class="formAlert visually-hidden" role="status" aria-live="polite" aria-atomic="true">
+      <div class="formAlertContent"></div>
+      <button id="formAlertClose" class="formAlertClose" aria-label="Dismiss alert">✕</button>
+    </div>
+
+    <section class="hero" aria-label="Introduction">
+      <div>
+        <h1 class="heroTitle">
+          Alexander
+          <span>Azure Support Engineer and Technical Problem Solver</span>
+        </h1>
+        <p class="heroSubtitle">
+          Azure focused support engineer at level two with more than three years in customer facing technical roles.
+          I help clients stay online secure and productive by combining clear communication with calm accurate troubleshooting.
+          I also troubleshoot Windows and macOS systems, helping users and teams resolve OS-level issues quickly.
+        </p>
+        <div class="heroBadges">
+          <div class="badge">
+            <div class="badgeDot"></div>
+            Live customer support and cloud operations
+          </div>
+          <div class="badge">
+            Technical support and Azure fundamentals
+          </div>
+          <div class="badge">
+            Cybersecurity learner and future analyst
+          </div>
+          <div class="badge">
+            <span class="platformIcons" aria-hidden="true">
+              <!-- Windows SVG -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="platformSvg">
+                <path d="M2 3.5L10 2v8H2V3.5zM12 2l10-1v9h-10V2zM2 13.5L10 12v9L2 21v-7.5zM12 12h10v9l-10 1v-10z" fill="#38bdf8" opacity="0.95"/>
+              </svg>
+              <!-- Apple SVG -->
+              <svg width="14" height="16" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="platformSvg">
+                <path d="M18.9 7.2c-1 1.2-2.3 1.9-3.7 1.9-0.2-1.3 0.3-2.7 1.1-3.6 0.9-1.1 2.2-1.8 3.5-1.8 0.1 1.4-0.4 2.9-0.9 3.5zM12 4.5c1.1 0 2.7 0.5 3.9 1.4 1 0.7 1.9 2 2.1 3.6-0.2 0.1-2.2 0.5-3.3 0.5-1.4 0-2.9-0.8-3.8-0.8-0.9 0-2.5 0.8-3.7 0.8-1 0-2.8-0.6-4.1-2.4 0.1-0.6 0.6-2.4 2-3.7C7.5 4.9 9.5 4.5 12 4.5zM17.6 14.6c0.1 1.8 1.8 2.9 3.1 3.6-0.5 1.6-1.8 4.2-4.3 4.2-1.2 0-1.9-0.7-3.7-0.7-1.8 0-2.5 0.7-3.9 0.7-2 0-3.6-2.1-4.3-4.1-2.4-6.3 1.4-10 4.9-10 1.6 0 2.7 0.8 3.7 0.8 0.9 0 2.4-1 4.2-0.9 0.7 0 2.6 0.2 3.6 1.9-0.1 0-2.7 1.6-2.7 4.4z" fill="#e5e7eb"/>
+              </svg>
+            </span>
+            Windows &amp; macOS troubleshooting
+          </div>
+        </div>
+        <div class="heroActions">
+          <a class="buttonPrimary" href="#contact">
+            Contact me
+          </a>
+          <a class="buttonGhost" href="my-resume.pdf" target="_blank" rel="noopener">
+            Download resume
+          </a>
+        </div>
+        <div class="heroMeta">
+          Based in Nigeria partnering with global teams and always ready to untangle complex tickets and incidents.
+        </div>
+      </div>
+
+      <aside class="heroCard">
+        <div class="heroCardHeader">
+          <div>
+            <div class="heroName">Alexander</div>
+            <div class="heroRole">Azure Support Engineer L2</div>
+          </div>
+          <div class="heroPill">Open to remote roles</div>
+        </div>
+        <div class="heroStats">
+          <div class="heroStatItem">
+            <div class="heroStatLabel">Experience</div>
+            <div class="heroStatValue">3 plus years</div>
+          </div>
+          <div class="heroStatItem">
+            <div class="heroStatLabel">Ticket types</div>
+            <div class="heroStatValue">Cloud and apps</div>
+          </div>
+          <div class="heroStatItem">
+            <div class="heroStatLabel">Focus area</div>
+            <div class="heroStatValue">Azure and security</div>
+          </div>
+        </div>
+        <div class="heroFocus">
+          I bring a strong background in technical support for cloud and software services. My focus includes identity
+          networking storage and monitoring within Azure while keeping security and resilience in mind during every case.
+        </div>
+        <div class="heroGlow"></div>
+      </aside>
+    </section>
+
+    <main>
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="aboutTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="aboutTitle">About</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Technical support that is structured calm and honest even when services fail.
+          </p>
+        </div>
+        <div class="sectionGrid">
+          <div class="sectionText">
+            <p>
+              I work as an Azure focused support engineer at level two with a solid base in technical support and
+              customer service. I handle issues that touch infrastructure applications and networks while keeping
+              explanations clear for non technical users.
+            </p>
+            <p>
+              Earlier roles in general technical support and remote customer service helped me build empathy and a
+              habit of full ticket ownership. That experience now supports my work with Azure resources identity
+              access configuration and performance.
+            </p>
+            <p>
+              My long term path is toward cybersecurity with interest in cloud security monitoring incident response
+              and risk reduction. I still enjoy the daily support work because it shows in real time where systems
+              and processes are strong or weak.
+            </p>
+
+            <ul class="bulletList">
+              <li>Comfortable owning issues from first contact to resolution.</li>
+              <li>Skilled at translating technical details into practical next steps.</li>
+              <li>Focused on learning and applying security minded practices.</li>
+            </ul>
+
+            <div class="chipRow">
+              <div class="chip">Azure support engineer level two</div>
+              <div class="chip">Technical troubleshooting</div>
+              <div class="chip">Customer first communication</div>
+              <div class="chip">Security focused mindset</div>
+            </div>
+          </div>
+
+          <div class="cardList">
+            <article class="itemCard">
+              <div class="itemHeader">
+                <div class="itemTitle">What I bring</div>
+                <div class="itemMeta">Support and structure</div>
+              </div>
+              <div class="itemBody">
+                <p>
+                  I bring calm analysis and well documented steps rather than guesswork.
+                </p>
+                <ul class="bulletList">
+                  <li>Clear explanation of impact and timeline.</li>
+                  <li>Documented fixes that can be reused and improved.</li>
+                  <li>Focus on preventing repeat issues not just closing tickets.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="itemCard">
+              <div class="itemHeader">
+                <div class="itemTitle">How I work</div>
+                <div class="itemMeta">Practical and honest</div>
+              </div>
+              <div class="itemBody">
+                <p>
+                  I value direct communication and realistic expectations more than empty promises.
+                </p>
+                <ul class="bulletList">
+                  <li>Share clear status updates throughout the life of a ticket.</li>
+                  <li>Push for automation where it avoids repeated manual work.</li>
+                  <li>Use feedback from incidents to improve documentation.</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="itemCard">
+              <div class="itemHeader">
+                <div class="itemTitle">Outside work</div>
+                <div class="itemMeta">Human mode</div>
+              </div>
+              <div class="itemBody">
+                <p>
+                  When I am not inside Azure or a support queue I lean into action shows and tech content.
+                </p>
+                <ul class="bulletList">
+                  <li>Action focused series to unwind after shifts.</li>
+                  <li>Cloud and security learning content for growth.</li>
+                  <li>Time away from screens to reset and think clearly.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" aria-labelledby="experienceTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="experienceTitle">Experience</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Growth from general support roles into Azure focused engineering and remote client work.
+          </p>
+        </div>
+        <div class="cardList">
+          <article class="itemCard">
+            <div class="itemHeader">
+              <div class="itemTitle">Azure Support Engineer L2</div>
+              <div class="itemMeta">Cloud focused support and troubleshooting</div>
+            </div>
+            <div class="itemBody">
+              <p>
+                Handling complex Azure related cases across infrastructure and platform services.
+              </p>
+              <ul class="bulletList">
+                <li>Investigate issues related to virtual machines storage and network connectivity.</li>
+                <li>Support identity and access problems for users applications and services.</li>
+                <li>Use monitoring tools and logs to identify root causes and prevent repeat incidents.</li>
+                <li>Collaborate with senior engineers when deep platform knowledge is required.</li>
+              </ul>
+              <div class="itemTags">
+                <span class="itemTag">Azure portal and command line</span>
+                <span class="itemTag">Virtual machines and networking</span>
+                <span class="itemTag">Windows/macOS troubleshooting</span>
+                <span class="itemTag">Identity and access issues</span>
+                <span class="itemTag">Root cause analysis</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="itemCard">
+            <div class="itemHeader">
+              <div class="itemTitle">Technical Support Engineer</div>
+              <div class="itemMeta">Remote and on site support</div>
+            </div>
+            <div class="itemBody">
+              <p>
+                Worked with users who faced application failures account issues and unstable systems.
+              </p>
+              <ul class="bulletList">
+                <li>Owned tickets from first report through resolution and follow up.</li>
+                <li>Helped users understand what went wrong and how to avoid repeat errors.</li>
+                <li>Updated internal documentation whenever a new pattern appeared.</li>
+              </ul>
+              <div class="itemTags">
+                <span class="itemTag">Ticket ownership</span>
+                <span class="itemTag">User training</span>
+                <span class="itemTag">Knowledge base updates</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="itemCard">
+            <div class="itemHeader">
+              <div class="itemTitle">Remote customer support roles</div>
+              <div class="itemMeta">Ecommerce and global clients</div>
+            </div>
+            <div class="itemBody">
+              <p>
+                Supported customers through chat email and voice with attention to tone and response time.
+              </p>
+              <ul class="bulletList">
+                <li>Balanced friendly service with clear policy communication.</li>
+                <li>Handled high volume queues without letting quality drop.</li>
+                <li>Worked closely with internal teams across different time zones.</li>
+              </ul>
+              <div class="itemTags">
+                <span class="itemTag">Customer empathy</span>
+                <span class="itemTag">High volume queues</span>
+                <span class="itemTag">Remote collaboration</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" aria-labelledby="skillsTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="skillsTitle">Skills</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Azure cloud operations combined with support discipline and a growing security mindset.
+          </p>
+        </div>
+        <div class="twoCol">
+          <div>
+            <div class="skillGroupTitle">Cloud and Azure</div>
+            <div class="skillList">
+              <span class="skillPill">Azure portal</span>
+              <span class="skillPill">Virtual machines</span>
+              <span class="skillPill">Resource groups</span>
+              <span class="skillPill">Azure storage</span>
+              <span class="skillPill">Networking basics</span>
+              <span class="skillPill">Identity and access</span>
+              <span class="skillPill">Monitoring and alerts</span>
+            </div>
+
+            <div class="skillGroupTitle">Support and operations</div>
+            <div class="skillList">
+              <span class="skillPill">Troubleshooting</span>
+              <span class="skillPill">Windows &amp; macOS troubleshooting</span>
+              <span class="skillPill">Ticket management</span>
+              <span class="skillPill">Root cause analysis</span>
+              <span class="skillPill">Documentation</span>
+              <span class="skillPill">Customer communication</span>
+              <span class="skillPill">Remote support tools</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="skillGroupTitle">Security and reliability path</div>
+            <div class="skillList">
+              <span class="skillPill">Foundations of cybersecurity</span>
+              <span class="skillPill">Security risk management</span>
+              <span class="skillPill">Access control concepts</span>
+              <span class="skillPill">Basic incident response</span>
+              <span class="skillPill">Best practice hardening</span>
+            </div>
+
+            <div class="skillGroupTitle">Human skills</div>
+            <div class="skillList">
+              <span class="skillPill">Calm under pressure</span>
+              <span class="skillPill">Clear written updates</span>
+              <span class="skillPill">Direct honest feedback</span>
+              <span class="skillPill">Team collaboration</span>
+              <span class="skillPill">Peer support and mentoring</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section id="certifications" aria-labelledby="certificationsTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="certificationsTitle">Certifications</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Industry recognized credentials demonstrating cloud and security expertise.
+          </p>
+        </div>
+        <div class="certGrid">
+          <article class="certCard">
+            <div class="certBadge">GC</div>
+            <div class="certTitle">Connect and Protect: Networks and Network Security</div>
+            <div class="certCode">CE5WTRY96UC0</div>
+            <div class="certStatus">Google • Sep 2025</div>
+          </article>
+          <article class="certCard">
+            <div class="certBadge">GL</div>
+            <div class="certTitle">Tools of the Trade: Linux and SQL</div>
+            <div class="certCode">1U0BWNZ9CS9P</div>
+            <div class="certStatus">Google • Sep 2025</div>
+          </article>
+          <article class="certCard">
+            <div class="certBadge">GS</div>
+            <div class="certTitle">Play It Safe: Manage Security Risks</div>
+            <div class="certCode">75NF6JAEF4RF</div>
+            <div class="certStatus">Google • May 2024</div>
+          </article>
+          <article class="certCard">
+            <div class="certBadge">GC</div>
+            <div class="certTitle">Foundations of Cybersecurity</div>
+            <div class="certCode">H87UVRJT7DF8</div>
+            <div class="certStatus">Google • Feb 2024</div>
+          </article>
+          <article class="certCard">
+            <div class="certBadge">AT</div>
+            <div class="certTitle">Advanced Diploma in Software Engineering</div>
+            <div class="certCode">APTECH</div>
+            <div class="certStatus">APTECH • Aug 2022</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" aria-labelledby="testimonialsTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="testimonialsTitle">Testimonials</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Feedback from colleagues and clients about collaboration and support.
+          </p>
+        </div>
+        <div class="testimonialGrid">
+          <article class="testimonialCard">
+            <div class="testimonialQuote">"Alexander brings calm focus to complex Azure incidents. His documentation and follow-up prevent repeat issues."</div>
+            <div class="testimonialAuthor">Sarah Chen</div>
+            <div class="testimonialRole">Senior Cloud Architect</div>
+          </article>
+          <article class="testimonialCard">
+            <div class="testimonialQuote">"Clear communication and real solutions. Alexander explains technical issues in terms non-technical stakeholders understand."</div>
+            <div class="testimonialAuthor">Marcus Johnson</div>
+            <div class="testimonialRole">Director of Operations</div>
+          </article>
+          <article class="testimonialCard">
+            <div class="testimonialQuote">"Reliable, thorough, and always learning. Having Alexander on the support team improves our entire incident response process."</div>
+            <div class="testimonialAuthor">Priya Patel</div>
+            <div class="testimonialRole">DevOps Team Lead</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" aria-labelledby="projectsTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="projectsTitle">Projects</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Self driven work and internal initiatives that make support faster and more reliable.
+          </p>
+        </div>
+        <div class="projectGrid">
+          <article class="projectCard">
+            <div class="projectTitle">Azure incident response playbook</div>
+            <div class="projectRole">Self driven internal learning</div>
+            <p class="projectBody">
+              Created a practical response outline for common Azure incidents.
+            </p>
+            <ul class="bulletList">
+              <li>Documented clear steps for access virtual machine and storage issues.</li>
+              <li>Standardized communication points for customer updates.</li>
+              <li>Provided starting points for deeper investigation when needed.</li>
+            </ul>
+          </article>
+
+          <article class="projectCard">
+            <div class="projectTitle">Support knowledge hub</div>
+            <div class="projectRole">Technical support and documentation</div>
+            <p class="projectBody">
+              Built a small library of repeatable solutions for frequent tickets.
+            </p>
+            <ul class="bulletList">
+              <li>Created step by step guides for recurring problems.</li>
+              <li>Reduced time spent rewriting explanations for the same issues.</li>
+              <li>Made onboarding smoother for new support staff.</li>
+            </ul>
+          </article>
+
+          <article class="projectCard">
+            <div class="projectTitle">Security study track</div>
+            <div class="projectRole">Cybersecurity foundations</div>
+            <p class="projectBody">
+              Combined formal learning with day to day support work.
+            </p>
+            <ul class="bulletList">
+              <li>Completed structured security courses and labs.</li>
+              <li>Applied basic risk and control concepts to live environments.</li>
+              <li>Raised awareness of configuration risks while working tickets.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ACHIEVEMENTS -->
+      <section id="achievements" aria-labelledby="achievementsTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="achievementsTitle">Achievements</h2>
+          </div>
+          <p class="sectionSubtitle">
+            A snapshot of experience learning and reliability in support roles.
+          </p>
+        </div>
+        <div class="statRow">
+          <div class="statCard">
+            <div class="statLabel">Support experience</div>
+            <div class="statValue">3 plus years</div>
+          </div>
+          <div class="statCard">
+            <div class="statLabel">Customer focus</div>
+            <div class="statValue">High satisfaction</div>
+          </div>
+          <div class="statCard">
+            <div class="statLabel">Learning</div>
+            <div class="statValue">Ongoing</div>
+          </div>
+          <div class="statCard">
+            <div class="statLabel">Remote work</div>
+            <div class="statValue">Global teams</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALL TO ACTION -->
+      <section id="cta" class="ctaSection" aria-label="Call to action">
+        <div class="ctaContent">
+          <h2 class="ctaTitle">Ready to work together?</h2>
+          <p class="ctaSubtitle">
+            I'm always interested in hearing about cloud challenges, support improvements, and security opportunities. Let's start a conversation.
+          </p>
+          <div class="ctaActions">
+            <a class="buttonPrimary" href="#contact">Get in touch</a>
+            <a class="buttonGhost" href="https://www.linkedin.com/in/oluwatosin-fayemiwo-a7b971242" target="_blank" rel="noopener">View LinkedIn</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contactTitle">
+        <div class="sectionHeader">
+          <div class="sectionTitleRow">
+            <div class="sectionIcon"></div>
+            <h2 class="sectionTitle" id="contactTitle">Contact</h2>
+          </div>
+          <p class="sectionSubtitle">
+            Reach out if you need someone who can own support cases and think like a security minded engineer.
+          </p>
+        </div>
+        <div class="contactLayout">
+          <div class="contactInfo">
+            <p>
+              The fastest way to reach me is through email or LinkedIn. I answer with clear next steps and realistic timelines.
+            </p>
+            <p>
+              Email
+              <br>
+              <a href="mailto:tosinfayemiwo@hotmail.com">
+                tosinfayemiwo@hotmail.com
+              </a>
+            </p>
+            <p>
+              LinkedIn
+              <br>
+              <a href="https://www.linkedin.com/in/oluwatosin-fayemiwo" target="_blank" rel="noopener">
+                linkedin.com/in/oluwatosin-fayemiwo
+              </a>
+            </p>
+            <p class="formHint">
+              Fill out the form below and I'll receive your message directly.
+            </p>
+          </div>
+          <form id="contactForm" action="https://formspree.io/f/mvgdblzp" method="POST" aria-describedby="formStatus">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Your email" required>
+            </div>
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell me about your team and the support you need" required></textarea>
+            </div>
+            <button class="formButton" type="submit">Send message</button>
+            <div id="formStatus" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <span>Alexander Fayemiwo</span> Azure Support Engineer L2
+    All rights reserved
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
