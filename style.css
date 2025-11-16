@@ -79,7 +79,7 @@ header {
   padding: 0.75rem 0 1.5rem;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 45;
   backdrop-filter: blur(14px);
   background: linear-gradient(
     to bottom,
@@ -93,6 +93,7 @@ header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 /* Mobile nav toggle */
@@ -104,6 +105,8 @@ header {
   border-radius: 999px;
   cursor: pointer;
   color: inherit;
+  position: relative;
+  z-index: 50;
 }
 
 .navLinks {
@@ -433,6 +436,14 @@ main {
 
 
 /* Off-canvas mobile nav styles */
+body.nav-open {
+  overflow: hidden;
+}
+
+.navBackdrop {
+  display: none;
+}
+
 body.nav-open .navLinks {
   transform: translateX(0) !important;
   visibility: visible !important;
@@ -1286,6 +1297,7 @@ footer {
     visibility: hidden;
     opacity: 0;
     z-index: 40;
+    pointer-events: auto;
   }
 
   nav { width: 100%; }
