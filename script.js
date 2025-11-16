@@ -360,7 +360,8 @@ if (mobileClose) {
   });
 }
 
-// close mobile nav when clicking outside nav (on overlay area)
+// backdrop is now hidden; Escape and outside-click handlers close the nav instead
+
 document.addEventListener('click', (e) => {
   const nav = document.getElementById('mainNav');
   const toggleEl = document.getElementById('mobileNavToggle');
@@ -376,3 +377,4 @@ document.addEventListener('click', (e) => {
     document.removeEventListener('keydown', closeOnEscape);
   }
 });
+
