@@ -151,6 +151,32 @@ header {
   color: #9ca3af;
 }
 
+.logoTag {
+  font-size: 0.72rem;
+  color: #cbd5f5;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.25);
+  background: rgba(15,23,42,0.55);
+}
+
+.logoTagIcon {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 0.45rem;
+  color: #38bdf8;
+}
+
+/* Light theme adjustments for logoTag to match hero pill style */
+body.lightTheme .logoTag {
+  background: linear-gradient(to right, rgba(255,255,255,0.95), rgba(243,244,246,0.95));
+  color: #0b1220;
+  border-color: rgba(220,220,225,0.9);
+}
+body.lightTheme .logoTagIcon {
+  color: #06b6d4;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -1556,3 +1582,58 @@ body.lightTheme textarea:focus {
 
 /* Slightly larger base type for improved readability */
 body.lightTheme { font-size: 16px; }
+
+/* Case study modal styles */
+.caseStudyModal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2,6,23,0.6);
+  z-index: 9999;
+  padding: 1.25rem;
+}
+.caseStudyModal[hidden] { display: none; }
+.caseStudyContent {
+  background: #0f172a;
+  color: #e5e7eb;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  position: relative;
+}
+.caseStudyContent .modalClose {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.caseStudyGallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+.caseStudyGallery img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+  height: 160px;
+}
+/* Light theme modal adjustments */
+body.lightTheme .caseStudyContent {
+  background: #ffffff;
+  color: #0b1220;
+  border: 1px solid rgba(220,220,225,0.9);
+}
+body.lightTheme .caseStudyModal {
+  background: rgba(255,255,255,0.7);
+}
