@@ -378,3 +378,51 @@ document.addEventListener('click', (e) => {
   }
 });
 
+/* Case study modal behavior */
+(function() {
+  const caseModal = document.getElementById('caseStudyModal');
+  const viewBtns = document.querySelectorAll('.viewCaseBtn');
+  const closeBtn = caseModal ? caseModal.querySelector('.modalClose') : null;
+
+  function openModal() {
+    if (!caseModal) return;
+    caseModal.removeAttribute('hidden');
+    const content = caseModal.querySelector('.caseStudyContent');
+    if (content) content.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!caseModal) return;
+    caseModal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }
+
+  viewBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      openModal();
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      closeModal();
+    });
+  }
+
+  // click outside to close
+  document.addEventListener('click', (e) => {
+    if (!caseModal || caseModal.hasAttribute('hidden')) return;
+    const content = caseModal.querySelector('.caseStudyContent');
+    if (content && !content.contains(e.target) && !e.target.classList.contains('viewCaseBtn')) {
+      closeModal();
+    }
+  });
+
+  // escape key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && caseModal && !caseModal.hasAttribute('hidden')) {
+      closeModal();
+    }
+  });
+})();
