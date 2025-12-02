@@ -38,55 +38,99 @@ if (toggle) {
 }
 
 /* Mobile nav: toggle, aria-expanded and focus trap */
+// Ensure ARIA initial state
+if (mainNav) {
+  if (!mainNav.hasAttribute('aria-hidden')) mainNav.setAttribute('aria-hidden', 'true');
+}
+
+// focus-trap and escape handler (file-scoped so all handlers can reference)
+const trapFocus = (e) => {
+  if (e.key !== 'Tab') return;
+  if (!mainNav) return;
+  const focusable = Array.from(mainNav.querySelectorAll('a, button')).filter(el => !el.hasAttribute('disabled'));
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    }
+  } else {
+    if (document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+};
+
+const closeOnEscape = (e) => {
+  if (e.key === 'Escape') closeNav();
+};
+
+// central close function
+function closeNav() {
+  document.body.classList.remove('nav-open');
+  if (mobileToggle) {
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    mobileToggle.setAttribute('aria-label', 'Open menu');
+    mobileToggle.focus();
+  }
+  if (mainNav) mainNav.setAttribute('aria-hidden', 'true');
+  document.removeEventListener('keydown', trapFocus);
+  document.removeEventListener('keydown', closeOnEscape);
+  // if we moved the nav to body for mobile, restore it to its original place
+  try {
+    if (window.__navMoved && window.__navOriginalParent) {
+      const parent = window.__navOriginalParent;
+      const next = window.__navOriginalNextSibling;
+      if (next && next.parentNode === parent) parent.insertBefore(mainNav, next);
+      else parent.appendChild(mainNav);
+      window.__navMoved = false;
+      window.__navOriginalParent = null;
+      window.__navOriginalNextSibling = null;
+    }
+  } catch (e) {
+    // ignore restore errors
+    console.warn('Could not restore nav position', e);
+  }
+}
+
+// open function
+function openNav() {
+  document.body.classList.add('nav-open');
+  if (mobileToggle) {
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    mobileToggle.setAttribute('aria-label', 'Close menu');
+  }
+  if (mainNav) {
+    mainNav.setAttribute('aria-hidden', 'false');
+    // focus first focusable link
+    const focusable = mainNav.querySelectorAll('a, button');
+    if (focusable.length) focusable[0].focus();
+  }
+  document.addEventListener('keydown', trapFocus);
+  document.addEventListener('keydown', closeOnEscape);
+}
+
 if (mobileToggle && mainNav) {
   mobileToggle.addEventListener('click', () => {
-    const open = document.body.classList.toggle('nav-open');
-    mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    // move focus into the nav when opened
-    if (open) {
-      // focus first focusable link
-      const focusable = mainNav.querySelectorAll('a, button');
-      if (focusable.length) focusable[0].focus();
-      // trap focus
-      document.addEventListener('keydown', trapFocus);
-      document.addEventListener('keydown', closeOnEscape);
+    // On small viewports, move the nav to document.body to avoid transform/stacking context issues
+    const isSmall = window.matchMedia && window.matchMedia('(max-width: 900px)').matches;
+    if (isSmall && mainNav && mainNav.parentElement !== document.body) {
+      // save original place for restore
+      window.__navOriginalParent = mainNav.parentElement;
+      window.__navOriginalNextSibling = mainNav.nextElementSibling;
+      window.__navMoved = true;
+      document.body.appendChild(mainNav);
+    }
+
+    if (document.body.classList.contains('nav-open')) {
+      closeNav();
     } else {
-      document.removeEventListener('keydown', trapFocus);
-      document.removeEventListener('keydown', closeOnEscape);
-      mobileToggle.focus();
+      openNav();
     }
   });
-
-  function closeOnEscape(e) {
-    if (e.key === 'Escape') {
-      document.body.classList.remove('nav-open');
-      mobileToggle.setAttribute('aria-expanded', 'false');
-      mobileToggle.setAttribute('aria-label', 'Open menu');
-      document.removeEventListener('keydown', trapFocus);
-      document.removeEventListener('keydown', closeOnEscape);
-      mobileToggle.focus();
-    }
-  }
-
-  function trapFocus(e) {
-    if (e.key !== 'Tab') return;
-    const focusable = Array.from(mainNav.querySelectorAll('a, button')).filter(el => !el.hasAttribute('disabled'));
-    if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      }
-    } else {
-      if (document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-  }
 }
 
 // Scroll progress bar
@@ -348,15 +392,7 @@ if (alertClose) {
 const mobileClose = document.getElementById('mobileNavClose');
 if (mobileClose) {
   mobileClose.addEventListener('click', () => {
-    document.body.classList.remove('nav-open');
-    const mobileToggleEl = document.getElementById('mobileNavToggle');
-    if (mobileToggleEl) {
-      mobileToggleEl.setAttribute('aria-expanded', 'false');
-      mobileToggleEl.setAttribute('aria-label', 'Open menu');
-      mobileToggleEl.focus();
-    }
-    document.removeEventListener('keydown', trapFocus);
-    document.removeEventListener('keydown', closeOnEscape);
+    closeNav();
   });
 }
 
@@ -369,14 +405,59 @@ document.addEventListener('click', (e) => {
   if (!document.body.classList.contains('nav-open')) return;
   // if click target is outside nav and not the toggle, close
   if (!nav.contains(e.target) && !toggleEl.contains(e.target)) {
-    document.body.classList.remove('nav-open');
-    toggleEl.setAttribute('aria-expanded', 'false');
-    toggleEl.setAttribute('aria-label', 'Open menu');
-    toggleEl.focus();
-    document.removeEventListener('keydown', trapFocus);
-    document.removeEventListener('keydown', closeOnEscape);
+    closeNav();
   }
 });
+
+// Close nav when clicking the backdrop (if present)
+const navBackdrop = document.getElementById('navBackdrop');
+if (navBackdrop) {
+  navBackdrop.addEventListener('click', () => {
+    if (document.body.classList.contains('nav-open')) closeNav();
+  });
+}
+
+/* Nav self-test: programmatically open/close the nav and log ARIA checks */
+function runNavSelfTest() {
+  try {
+    const result = { before: {}, afterOpen: {}, afterClose: {} };
+    result.before.hasNavOpen = document.body.classList.contains('nav-open');
+
+    openNav();
+    result.afterOpen.hasNavOpen = document.body.classList.contains('nav-open');
+    result.afterOpen.ariaExpanded = mobileToggle ? mobileToggle.getAttribute('aria-expanded') : null;
+    result.afterOpen.ariaHidden = mainNav ? mainNav.getAttribute('aria-hidden') : null;
+
+    closeNav();
+    result.afterClose.hasNavOpen = document.body.classList.contains('nav-open');
+    result.afterClose.ariaExpanded = mobileToggle ? mobileToggle.getAttribute('aria-expanded') : null;
+    result.afterClose.ariaHidden = mainNav ? mainNav.getAttribute('aria-hidden') : null;
+
+    const pass = result.afterOpen.hasNavOpen === true && result.afterOpen.ariaExpanded === 'true' && result.afterOpen.ariaHidden === 'false' && result.afterClose.hasNavOpen === false && result.afterClose.ariaExpanded === 'false' && result.afterClose.ariaHidden === 'true';
+
+    console.group('Navigation Self Test');
+    console.log('Result object:', result);
+    console.log('PASS:', pass);
+    console.groupEnd();
+
+    return pass;
+  } catch (err) {
+    console.warn('Nav self-test error', err);
+    return false;
+  }
+}
+
+// run quick test once on load and expose function to `window` for rerun
+try {
+  // delay slightly so DOM styles and media queries settle
+  setTimeout(() => {
+    const testPassed = runNavSelfTest();
+    window.__runNavSelfTest = runNavSelfTest;
+    if (!testPassed) console.warn('Nav self-test did not pass; try opening the page in a mobile-width viewport and re-run `__runNavSelfTest()` from the console.');
+  }, 120);
+} catch (e) {
+  console.warn('Could not run nav self-test', e);
+}
 
 /* Case study modal behavior */
 (function() {
