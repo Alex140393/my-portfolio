@@ -482,13 +482,24 @@ body.nav-open {
   overflow: hidden;
 }
 
-  body.nav-open .navBackdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(2, 6, 23, 0.5);
-    z-index: 35;
-  }
+/* mobile nav backdrop - default hidden, fades in when nav opens */
+.navBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease, background 220ms ease, visibility 220ms ease;
+  z-index: 10000; /* keep above page content */
+  pointer-events: none;
+}
+
+body.nav-open .navBackdrop {
+  visibility: visible;
+  opacity: 1;
+  background: rgba(2, 6, 23, 0.5);
+  pointer-events: auto;
+}
 
 body.nav-open .navLinks {
   transform: translateX(0) !important;
@@ -1368,7 +1379,7 @@ footer {
     transition: transform 280ms cubic-bezier(.2,.9,.2,1), opacity 200ms ease;
     visibility: hidden;
     opacity: 0;
-    z-index: 40;
+    z-index: 10001; /* ensure nav sits above header/main content */
     pointer-events: auto;
     overflow-y: auto;
     box-sizing: border-box;
